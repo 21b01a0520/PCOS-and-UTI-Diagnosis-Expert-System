@@ -24,8 +24,6 @@ This is a Flask-based web application designed as an expert system for diagnosin
 ### 2. Documentation
 - `README.md`: Instructions on setup, usage, and dependencies.
 - `requirements.txt`: List of required dependencies.
-- `report.pdf`: Detailed project documentation (if available).
-- `architecture.png`: Diagram showcasing the system pipeline.
 
 ### 3. Additional Resources
 - `Dataset columns information.txt`: Description of dataset fields.
