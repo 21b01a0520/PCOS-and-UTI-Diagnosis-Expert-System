@@ -13,8 +13,6 @@ import bcrypt# type: ignore
 from sklearn.feature_extraction.text import TfidfVectorizer# type: ignore
 from sklearn.metrics.pairwise import cosine_similarity# type: ignore
 
-df = pd.read_csv('gynecological_reviews.csv')
-
 app = Flask(__name__)
 app.secret_key = 'admin'
 
