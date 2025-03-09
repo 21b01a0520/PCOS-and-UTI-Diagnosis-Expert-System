@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disease Diagnosis Expert System</title>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/tooplate-little-fashion.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('/static/images/slideshow/hospitalrecords.jpg') no-repeat center center/cover;
+        }
+        .content-overlay {
+            background: rgba(210, 197, 197, 0.6);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .chart-container {
+            width: 60%;
+            height: auto;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            max-width: 100% !important;
+            height: 300px !important; 
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .download-btn {
+            margin-top: 20px;
+        }
+    </style>
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('admin') }}">
+                <strong>PCOS and UTI Diagnosis Expert System</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_data') }}">Urban Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('view_data2') }}">Rural Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('pie_chart') }}">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="container mt-5">
+            <div class="content-overlay">
+                <h2>Pie Chart of Rural and Urban Data</h2>
+            </div>
+            <div class="chart-container">
+                <h4>PCOS, UTI, and Healthy Cases</h4>
+                <canvas id="pieChart"></canvas>
+                <button id="downloadChart" class="btn btn-primary download-btn">Download Chart</button>
+            </div>
+        </section>
+    </main>
+
+
+    <script type="application/json" id="chart-data">
+        {{ data | tojson }}
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+     
+            const chartData = JSON.parse(document.getElementById('chart-data').textContent);
+
+            const categories = chartData.categories;
+            const totalCases = chartData.total;
+            const urbanCases = chartData.urban;
+            const ruralCases = chartData.rural;
+
+         
+            const ctx = document.getElementById('pieChart').getContext('2d');
+
+  
+            const pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Cases',
+                        data: totalCases,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    let index = tooltipItem.dataIndex;
+                                    return `Total: ${totalCases[index]}, Urban: ${urbanCases[index]}, Rural: ${ruralCases[index]}`;
+                                }
+                            }
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: {
+                                weight: 'bold'
+                            },
+                            formatter: (value, ctx) => {
+                                let total = ctx.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
+                                let percentage = ((value / total) * 100).toFixed(1) + "%";
+                                return percentage;
+                            }
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels] 
+            });
+
+            document.getElementById('downloadChart').addEventListener('click', function () {
+                const link = document.createElement('a');
+                link.href = pieChart.toBase64Image();
+                link.download = 'pie_chart.png';
+                link.click();
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

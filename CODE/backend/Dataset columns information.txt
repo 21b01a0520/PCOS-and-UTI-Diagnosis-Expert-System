@@ -1,0 +1,36 @@
+Here are descriptions for each column of the dataset:
+
+1. Nausea: Indicates whether the patient experiences nausea. Values are 'Yes' or 'No'.
+
+2. Lumber Pain: Indicates whether the patient experiences pain in the lumbar (lower back) region. Values are 'Yes' or 'No'.
+
+3. Urine Pushing: Indicates whether the patient experiences a sensation of pushing or pressure while urinating. Values are 'Yes' or 'No'.
+
+4. Micturition Pains: Indicates whether the patient experiences pain during urination. Values are 'Yes' or 'No'.
+
+5. Burning of Urethra: Indicates whether the patient feels a burning sensation in the urethra. Values are 'Yes' or 'No'.
+
+6. Itch: Indicates whether the patient experiences itching in the genital area. Values are 'Yes' or 'No'.
+
+7. Swelling of Urethra Outlet: Indicates whether there is swelling at the outlet of the urethra. Values are 'Yes' or 'No'.
+
+8. Inflammation of Urinary Bladder: Indicates whether the patient has inflammation of the urinary bladder (cystitis). Values are 'Yes' or 'No'.
+
+9. Nephritis of Renal Pelvis Origin: Indicates whether the patient has nephritis (inflammation) of the renal pelvis. Values are 'Yes' or 'No'.
+
+10. Irregular Periods: Indicates whether the patient experiences irregular menstrual periods. Values are 'Yes' or 'No'.
+
+11. No Periods: Indicates whether the patient has no menstrual periods (amenorrhea). Values are 'Yes' or 'No'.
+
+12. Excessive Hair Growth: Indicates whether the patient has excessive hair growth, typically in areas where men usually grow hair (hirsutism). Values are 'Yes' or 'No'.
+
+13. Buttocks Weight Gain: Indicates whether the patient has gained weight specifically in the buttocks area. Values are 'Yes' or 'No'.
+
+14. Belly Fat: Indicates whether the patient has increased fat accumulation in the abdominal area. Values are 'Yes' or 'No'.
+
+15. Hair Loss: Indicates whether the patient experiences hair loss. Values are 'Yes' or 'No'.
+
+16. Acne: Indicates whether the patient has acne. Values are 'Yes' or 'No'.
+
+17. Disease Name: The diagnosed disease based on the attributes provided. Possible values are 'UTI' (Urinary Tract Infection), 'PCOS' (Polycystic Ovary Syndrome), 'Healthy', or 'None'
+

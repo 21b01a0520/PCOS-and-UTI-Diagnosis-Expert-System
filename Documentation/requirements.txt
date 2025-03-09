@@ -1,0 +1,11 @@
+Flask
+mysql-connector-python
+joblib
+pandas
+numpy
+SpeechRecognition
+googletrans==4.0.0-rc1
+gTTS
+nltk
+bcrypt
+scikit-learn

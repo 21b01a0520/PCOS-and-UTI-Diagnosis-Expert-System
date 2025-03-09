@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('home')}}">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active " href="{{url_for('prediction')}}">Prediction</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="{{url_for('voice')}}">Voice</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('index')}}">Logout</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div style="background-color: #1f1010; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
+    <div style="background-color: #222; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+        <center>
+            <h4 style="margin-top: 850px;">Gynaecological Disease Diagnosis Expert System</h4>
+            {% if result %}
+            <h3 style="color: beige;">Prediction: {{result}}</h3>
+            {% endif %}
+            <h2 style="text-align: center;">Prediction</h2>
+
+            <form action="{{url_for('prediction')}}" method="post" style="width: 600px;">
+                <select id="Nausea" name="Nausea" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Nausea</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Lumber" name="Lumber" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Lumber Pain</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Urine" name="Urine" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Urine Pushing</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <select id="Micturition" name="Micturition" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Micturition Pains</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Urethra" name="Urethra" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Burning of Urethra</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Itch" name="Itch" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Itch</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Swelling" name="Swelling" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Swelling of Urethra Outlet</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Inflammation" name="Inflammation" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Inflammation of Urinary Bladder</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Nephritis" name="Nephritis" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Nephritis of Renal Pelvis Origin</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Irregular" name="Irregular" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Irregular Periods</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="No_Periods" name="No_Periods" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose No Periods</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Excessive_Hair_Growth" name="Excessive_Hair_Growth" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Excessive Hair Growth</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Buttocks" name="Buttocks" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Buttocks Weight Gain</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Belly_Fat" name="Belly_Fat" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Belly Fat</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Hair_Loss" name="Hair_Loss" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Hair Loss</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                
+                <select id="Acne" name="Acne" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; background-color: #333; color: #fff; border-radius: 5px;">
+                    <option value="">Choose Acne</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <button type="submit" id="form-submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            </form>
+        </center>
+    </div>
+</div>
+{% endblock %}

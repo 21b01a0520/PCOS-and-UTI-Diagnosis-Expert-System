@@ -1,0 +1,151 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('home')}}">Home</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link active " href="{{url_for('prediction')}}">Prediction</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="{{url_for('voice')}}">Voice</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('index')}}">Logout</a>
+    </li>
+    <style>
+        body{
+            background-image: url("/static/imgs/Surgeon.jpg");
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+        <div style="background-image: url('/static/imgs/Surgeon.jpg'); color: #110f0f; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
+            <div style="background-image: url('/static/imgs/Surgeon.jpg'); padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">    
+   
+    <center>
+            <h4 style="margin-top: 50px;color: rgb(19, 19, 18);">PCOS and UTI Diagnosis Expert System</h4>
+{% if result %} 
+    <h3 style="color: rgb(6, 130, 10);">Prediction: {{ result }}</h3>
+
+    {% if suggestionsp %}
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let suggestions = `{{ suggestionsp|safe }}`.trim().split("\n");
+                if (suggestions.length > 0 && suggestions[0] !== "") {
+                    // Create a floating button
+                    let floatingBtn = document.createElement("button");
+                    floatingBtn.innerHTML = "💡 Suggestions";
+                    floatingBtn.style = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background-color: #007bff;
+                        color: white;
+                        border: none;
+                        padding: 10px 15px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                    `;
+                    document.body.appendChild(floatingBtn);
+
+                    // Create a suggestion popup
+                    let suggestionBox = document.createElement("div");
+                    let listItems = suggestions.map(s => `<li>${s}</li>`).join(""); // Convert to bullet points
+                    suggestionBox.innerHTML = `
+                        <div id="suggestion-popup" style="
+                            position: fixed;
+                            bottom: 70px;
+                            right: 20px;
+                            width: 300px;
+                            background-color: white;
+                            padding: 15px;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            z-index: 1000;
+                            display: none;
+                            flex-direction: column;
+                            align-items: center;
+                            font-family: sans-serif;">
+                            
+                            <p style="color: black; text-align: center;"><strong>Suggestions:</strong></p>
+                            <ul style="color: black; font-size: 14px; text-align: left;">${listItems}</ul>
+                            <button onclick="document.getElementById('suggestion-popup').style.display='none'" style="
+                                background-color: red;
+                                color: white;
+                                border: none;
+                                padding: 5px 10px;
+                                margin-top: 5px;
+                                border-radius: 5px;
+                                cursor: pointer;">Close</button>
+                        </div>`;
+                    document.body.appendChild(suggestionBox);
+
+                    // Toggle suggestion visibility
+                    floatingBtn.addEventListener("click", function() {
+                        let popup = document.getElementById("suggestion-popup");
+                        popup.style.display = popup.style.display === "none" ? "flex" : "none";
+                    });
+                }
+            });
+        </script>
+    {% endif %}
+{% endif %}
+<h2 style="text-align: center; color: rgb(72, 72, 36);">Prediction</h2>
+
+<form action="{{url_for('prediction')}}" method="post" style="width: 600px; margin: auto;">
+
+    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+
+        {% for field, label in {
+            "Nausea": "Nausea",
+            "Lumber": "Lumber Pain",
+            "Urine": "Urine Pushing",
+            "Micturition": "Micturition Pains",
+            "Urethra": "Burning of Urethra",
+            "Itch": "Itch",
+            "Swelling": "Swelling of Urethra Outlet",
+            "Inflammation": "Inflammation of Urinary Bladder",
+            "Nephritis": "Nephritis of Renal Pelvis Origin",
+            "Irregular": "Irregular Periods",
+            "No_Periods": "No Periods",
+            "Excessive_Hair_Growth": "Excessive Hair Growth",
+            "Buttocks": "Buttocks Weight Gain",
+            "Belly_Fat": "Belly Fat",
+            "Hair_Loss": "Hair Loss",
+            "Acne": "Acne"
+        }.items() %}
+        
+        <div style="display: flex; justify-content: left; align-items: center; width: 80%; background-color: #333; padding: 10px; border-radius: 5px; color: white;">
+
+            <label style="min-width: 250px; text-align: left; margin-right: 20px;">{{ label }}</label>
+            <div style="display: flex; gap: 20px;">
+                <label>
+                    <input type="radio" name="{{ field }}" value="1" {% if user_selections.get(field) == "1" %}checked{% endif %} required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="{{ field }}" value="0" {% if user_selections.get(field) == "0" %}checked{% endif %} required> No
+                </label>
+            </div>
+
+
+        </div>
+
+        {% endfor %}
+        
+    </div>
+
+    <button type="submit" id="form-submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">
+        Submit
+    </button>
+
+</form>
+        </center>
+    </div>
+</div>
+{% endblock %}

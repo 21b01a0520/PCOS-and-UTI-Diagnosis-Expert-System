@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% block navbar %}
+<li class="nav-item">
+    <a class="nav-link active" href="{{url_for('index')}}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('about')}}">About</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('register')}}">Register</a>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Login
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="loginDropdown">
+        <li><a class="dropdown-item" href="{{url_for('login')}}">User Login</a></li>
+        <li><a class="dropdown-item" href="{{url_for('adlogin')}}">Admin Login</a></li>
+    </ul>
+</li>
+{% endblock %}
+{% block content %}
+<section class="sign-in-form section-padding" style="background-image: url('/static/imgs/Surgeon.jpg'); height: 100%;">]
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 mx-auto col-12">
+
+                <h1 class="hero-title text-center mb-5">User Login In</h1>
+
+                <div class="row">
+                    <div class="col-lg-8 col-11 mx-auto">
+                        <form action="{{url_for('login')}}" role="form" method="post">
+
+                            <div class="form-floating mb-4 p-0">
+                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+
+                                <label for="email">Email address</label>
+                            </div>
+
+                            <div class="form-floating p-0">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+
+                                <label for="password">Password</label>
+                            </div>
+
+                            <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
+                                Sign in
+                            </button>
+
+                            <p class="text-center">Don’t have an account? <a href="{{url_for('register')}}">Create One</a></p>
+
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

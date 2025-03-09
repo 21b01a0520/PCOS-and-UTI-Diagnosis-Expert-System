@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block extra_styles %}
+<style>
+    body {
+        background-image: url('/static/imgs/Surgeon.jpg');
+        background-size: cover; /* Cover the entire page */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent repeating */
+    }
+</style>
+{% endblock %}
+
+
+{% block navbar %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{{url_for('home')}}">Home</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('prediction')}}">Prediction</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('voice')}}">Voice</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('index')}}">Logout</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 align-self-center">
+          <div class="caption  header-text">
+            <div class="line-dec"></div>
+            <h2 style="margin-top: 300px;color: rgb(6, 206, 233);">WELCOME!</em></h2>
+          </div>
+          <h2 style="color: rgb(66, 10, 156);font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">PCOS and UTI Diagnosis Expert System</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
