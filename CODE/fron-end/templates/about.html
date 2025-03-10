@@ -19,113 +19,46 @@
     </ul>
 </li>
 {% endblock %}
-
 {% block content %}
-<section class="about section-padding">s
-    <div class="container">
-        <div class="row">
+<section class="about section-padding" 
+    style="position: relative; background: url('/static/imgs/medic2.jpg') no-repeat center center/cover; 
+           width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;">
+ 
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0, 0, 0, 0.5);"></div>
 
-            <div class="col-12 text-center">
-                <h2 class="mb-5">PCOS and UTI Diagnosis Expert System </h2>
-            </div>
-
-            <div class="col-lg-2 col-12 mt-auto mb-auto">
-                <ul class="nav nav-pills mb-5 mx-auto justify-content-center align-items-center" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Introduction</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-youtube-tab" data-bs-toggle="pill" data-bs-target="#pills-youtube" type="button" role="tab" aria-controls="pills-youtube" aria-selected="true">Statement about the Problem</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-skill-tab" data-bs-toggle="pill" data-bs-target="#pills-skill" type="button" role="tab" aria-controls="pills-skill" aria-selected="false">Objective of the Project</button>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-10 col-12">
-                <div class="tab-content mt-2" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                        <div class="row">
-                            <div class="col-lg-7 col-12">
-                                <img src="/static/imgs/medic2.jpg" class="img-fluid" alt="">
-                            </div>
-
-                            <div class="col-lg-5 col-12">
-                                <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
-                                    <h5 class="mb-3">PCOS and   <span>UTI</span> <br>Diagnosis <span> Expert System</h5>
-
-                                    <p>
-                                        The PCOS and UTI Diagnosis Expert System uses machine learning and natural language processing to diagnose Urinary Tract Infection (UTI) and Polycystic Ovary Syndrome (PCOS). It combines classical methods </p>
-
-                                    <div class="mt-2 mt-lg-auto">
-                                        <a href="about.html" class="custom-link mb-2">
-                                            Learn more about us
-                                            <i class="bi-arrow-right ms-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-youtube" role="tabpanel" aria-labelledby="pills-youtube-tab">
-
-                        <div class="row">
-                            <div class="col-lg-7 col-12">
-                                <div class="ratio ratio-16x9">
-                                    <img src="static\imgs\medic.jpg" title="medic.jpg" class="img-fluid" allowfullscreen></img>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-5 col-12">
-                                <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
-                                    <h4 class="mb-3"> Problem Statement </h4>
-
-                                    <p>Current diagnostic methods for gynaecological disorders like UTI and PCOS are subjective and error-prone, relying on traditional machine learning algorithms that lack precision. Enhancing accuracy and efficiency is a challenge. Advanced algorithms and Natural Language Processing (NLP) could improve diagnostic practices.</p>
-                                    <!-- <div class="mt-2 mt-lg-auto">
-                                        <a href="contact.html" class="custom-link mb-2">
-                                            Work with us
-                                            <i class="bi-arrow-right ms-2"></i>
-                                        </a>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-skill" role="tabpanel" aria-labelledby="pills-skill-tab">
-                        <div class="row">
-                            <div class="col-lg-7 col-12">
-                                <img src="static\imgs\Surgeon.jpg" class="img-fluid" alt="">
-                            </div>
-
-                            <div class="col-lg-5 col-12">
-                                <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
-                                    <h4 class="mb-3">Objective of the Project</h4>
-
-                                    <p>It will compare traditional and advanced algorithms to improve diagnostic accuracy. The goal is to provide a reliable, data-driven tool for healthcare professionals that reduces errors and diagnostic time.</p>
-
-                                    </div>
-                                    
-                                    <!-- <div class="mt-2 mt-lg-auto">
-                                        <a href="products.html" class="custom-link mb-2">
-                                            Explore products
-                                            <i class="bi-arrow-right ms-2"></i>
-                                        </a>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+    <div class="container position-relative animate-popup text-center">
+        <div class="col-lg-8 col-md-10 col-12 p-4 mx-auto"
+             style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(5px); 
+                    border-radius: 10px; padding: 20px;">
+            <h2 class="mb-4 text-dark">About</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: black;">
+                The PCOS and UTI Diagnosis Expert System is an AI-powered healthcare solution that assists users in diagnosing 
+                Polycystic Ovary Syndrome (PCOS) and Urinary Tract Infections (UTI). Using advanced machine learning and 
+                Natural Language Processing (NLP), the system analyzes symptoms from text or voice input. It processes data, 
+                identifies key symptoms, and provides an accurate diagnosis along with personalized health recommendations. 
+                With an intuitive interface and multilingual support, it ensures a seamless healthcare experience for users.
+            </p>
         </div>
     </div>
 </section>
+
+<style>
+    .animate-popup {
+        opacity: 0;
+        transform: scale(0.8);
+        animation: popUp 0.6s ease-out forwards;
+    }
+
+    @keyframes popUp {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
 {% endblock %}
